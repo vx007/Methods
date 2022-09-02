@@ -12,7 +12,7 @@ public class Main {
         printAppMsg(0, 2015);
 
         //Задание 3
-        printDeliveryDays(50);
+        System.out.println("Потребуется дней: " + printDeliveryDays(50));
 
         //Дополнительные задания
 
@@ -28,7 +28,7 @@ public class Main {
         System.out.printf("Среднее за месяц = %.2f.\n", calcMean(generateRandomArray(30)));
     }
 
-    public static void printLeapYear(int year) {
+    private static void printLeapYear(int year) {
         if (Year.isLeap(year)) {
             System.out.printf("%d — високосный год.\n", year);
         } else {
@@ -36,7 +36,7 @@ public class Main {
         }
     }
 
-    public static void printAppMsg(int clientOS, int clientDeviceYear) {
+    private static void printAppMsg(int clientOS, int clientDeviceYear) {
         if (clientOS == 0) {
             if (clientDeviceYear < LocalDate.now().getYear()) {
                 System.out.println("Установите облегченную версию приложения для iOS по ссылке");
@@ -54,7 +54,7 @@ public class Main {
         }
     }
 
-    public static void printDeliveryDays(int deliveryDistance) {
+    private static int printDeliveryDays(int deliveryDistance) {
         int deliveryDays;
         if (deliveryDistance > 0 && deliveryDistance <= 20) {
             deliveryDays = 1;
@@ -63,12 +63,12 @@ public class Main {
         } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
             deliveryDays = 3;
         } else {
-            return;
+            return 0;
         }
-        System.out.println("Потребуется дней: " + deliveryDays);
+        return deliveryDays;
     }
 
-    public static void reverseArr(int[] arr) {
+    private static void reverseArr(int[] arr) {
         for (int i = 0; i < arr.length / 2; i++) {
             int temp = arr[i];
             arr[i] = arr[arr.length - 1 - i];
@@ -76,7 +76,7 @@ public class Main {
         }
     }
 
-    public static void findDoublesInString(String str) {
+    private static void findDoublesInString(String str) {
         for (int i = 0; i < str.length() - 1; i++) {
             if (str.charAt(i) == str.charAt(i + 1)) {
                 System.out.println("Найден дубль: " + str.charAt(i));
@@ -86,7 +86,7 @@ public class Main {
         System.out.println("Дубль не найден!");
     }
 
-    public static int[] generateRandomArray(int size) {
+    private static int[] generateRandomArray(int size) {
         java.util.Random random = new java.util.Random();
         int[] arr = new int[size];
         for (int i = 0; i < arr.length; i++) {
@@ -95,10 +95,10 @@ public class Main {
         return arr;
     }
 
-    public static double calcMean(int[] arr) {
+    private static double calcMean(int[] arr) {
         int sum = 0;
-        for (int i : arr) {
-            sum += i;
+        for (int element : arr) {
+            sum += element;
         }
         return ((double) sum / arr.length);
     }
